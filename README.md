@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://super-secret-message.herokuapp.com/ 
 
-Things you may want to cover:
+App allows you to create a message locked with a password and provides a token for access.
 
-* Ruby version
+Uses bcrypt to encrypt the password
+Uses Bootstrap for responsive and attractive grid-based design
+Generates a token as the path for accessing the message so the URL is not easily guessable, ie: /284d271fab506b048315 (rather than “/messages/34”)
+Code repo: www.github.com/plie/super-secret-message
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
