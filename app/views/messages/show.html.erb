@@ -1,0 +1,9 @@
+<div class="mt-5 container">
+  <div class="p-3 mb-2 bg-dark text-white">
+    <h1>Secret Message</h1>
+    <br/>
+    <p><%= @message.message_body %></p>
+    <br/>
+    <small class="form-text text-light">This is a secret messaging service. This message has been deleted automatically. Need to <%= link_to 'create a message', messages_path %> to reply? </small>
+  </div>
+</div>
