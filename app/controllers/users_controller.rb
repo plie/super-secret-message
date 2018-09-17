@@ -3,10 +3,13 @@ class UsersController < ApplicationController
 	def show
 	end
 
-	def edit
+	def new
 	end
 
 	def create
+	end
+
+	def edit
 	end
 
 	def update
@@ -19,6 +22,5 @@ class UsersController < ApplicationController
 
 	def set_user
 	end
-
 
 end
