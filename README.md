@@ -2,7 +2,7 @@
 
 **This message will self-destruct!**
 
-My app allows you to send someone an encrypted message that self-dectructs once they view it. You send them a link and a password to unlock the encrypted message. Once it is opened, it self-destructs.
+My app allows you to send someone a secret message that self-destructs once they view it. You send them a link and a secret password to unlock the message. Once it is opened, the message is destroyed.
 
 The app generates a token as the path for accessing the message so the URL is not easily guessable,
 ie: /284d271fab506b048315 (rather than “/messages/34”)
