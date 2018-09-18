@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 		else
 			flash[:error] = "Unauthorized. Please enter correct password"
 			redirect_to '/'
+		end
 	end
 
 	def destroy
