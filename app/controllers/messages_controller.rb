@@ -44,4 +44,5 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:token, :password, :message_body)
   end
+
 end
