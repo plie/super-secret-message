@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 		if @user && @user.password == params(:password_hash)
 			@session[:session_id] = @user.id
 		else
-			flash[:error] "Unauthorized. Please enter correct password"
+			flash[:error] = "Unauthorized. Please enter correct password"
 			redirect_to '/'
 	end
 
