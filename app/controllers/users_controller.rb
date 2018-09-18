@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-	skip_before_action :authenticate, only: [:new, :create]
+	before_action :authenticate, only: [:show, :edit, :update]
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+	attr_reader :current_user
 
 	def show
 	end
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user.destroy
-		flash[:success] = "Your account has been destroyed. Thank you for using Super Secret Message!"
+		flash[:success] = "Your account, your data and all unopened messages have been deleted. Thank you for using Super Secret Message!"
 		redirect_to '/'
 	end
 
@@ -49,5 +51,12 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:cell, :password_hash, :handle)
 	end
+
+	def authenticate
+  	@current_user = User.find_by(id: session[:user_id])
+  	unless @current_user
+  		flash[:success] = "Welcome! Please log in."
+  		redirect_to user_path
+  	end
 
 end
