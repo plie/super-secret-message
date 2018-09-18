@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 	before_action :authenticate
-	
+
 	def create
 		@user = User.find(:user_id)
 		if @user && @user.password == params(:password_hash)
@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 	private
 
 	def set_user
+		@current_user = @user
 	end
 
 end
