@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
-
+	before_action :authenticate
+	
 	def create
 		@user = User.find(:user_id)
 		if @user && @user.password == params(:password_hash)
 			@session[:session_id] = @user.id
 		else
-			flash[:error] = "Unauthorized. Please enter correct password"
+			flash[:warning] = "Unauthorized. Please enter correct password"
 			redirect_to '/'
 		end
 	end
