@@ -58,5 +58,6 @@ class UsersController < ApplicationController
   		flash[:success] = "Welcome! Please log in."
   		redirect_to user_path
   	end
+  end
 
 end
