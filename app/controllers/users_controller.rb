@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   	@current_user = User.find_by(id: session[:user_id])
   	unless @current_user
   		flash[:success] = "Welcome! Please log in."
-  		redirect_to user_path
+  		redirect_to new_session_path
   	end
   end
 
