@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 		else
 			flash[:danger] = "New account not created. Please try again"
 			redirect_to new_user_path
+		end
 	end
 
 	def edit
