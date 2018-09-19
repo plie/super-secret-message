@@ -48,12 +48,15 @@ class UsersController < ApplicationController
 	def set_and_authenticate_user
 		Rails.logger.info("session[:session_id] is: #{session[:session_id]}")
 		Rails.logger.info("session[:user_id] is: #{session[:user_id]}")
+
 		@current_user = User.find_by_id(session[:user_id])
+
 		Rails.logger.info("session[:user_id] is: #{session[:user_id]}")
+		
 		if @current_user
 			@user = @current_user
 		else
-			flash[:warning] = "Why didn't this work, Jenee?"
+			flash[:warning] = "Please log in"
 			redirect_to new_session_path
 		end
   end
