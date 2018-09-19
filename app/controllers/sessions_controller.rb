@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-	render layout: 'account'
+	layout: 'account'
 
 	def new
 	end

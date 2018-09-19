@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-	before_action :authenticate, only: [:show, :edit, :update]
-	before_action :set_user, only: [:show, :edit, :update, :destroy]
-	render layout: 'account'
+	before_action :set_and_authenticate_user, only: [:show, :edit, :update, :destroy]
+	layout: 'account'
 
 	attr_reader :current_user
 
@@ -46,20 +45,17 @@ class UsersController < ApplicationController
 
 	private
 
-	def set_user
-		@user = User.find(params[:id])
+	def set_and_authenticate_user
+		@current_user = User.find_by(id: session[:user_id])
+		unless @current_user
+			flash[:success] = "Welcome! Please log in."
+			redirect_to new_session_path
+		end
+		@user = @current_user
 	end
 
 	def user_params
 		params.require(:user).permit(:cell, :password_hash, :handle)
 	end
-
-	def authenticate
-  	@current_user = User.find_by(id: session[:user_id])
-  	unless @current_user
-  		flash[:success] = "Welcome! Please log in."
-  		redirect_to new_session_path
-  	end
-  end
 
 end
