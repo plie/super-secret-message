@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_and_authenticate_user, only: [:show, :edit, :update, :destroy]
-	layout: 'account'
+	layout 'account'
 
 	attr_reader :current_user
 

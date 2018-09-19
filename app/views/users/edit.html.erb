@@ -3,5 +3,14 @@
 	<h1>Edit User</h1>
 
 
+    <p>Edit your account information:</p>
+    
+    <%= form_for @user do |f| %>
+    	<%= f.text_field :handle, 'Handle' %>
+    	<%= f.text_field :cell, 'Cell' %>
+    	<%= f.password_field :password 'Password' %>
+    	<%= f.submit 'Submit' %>
+    <% end %>
+    
 	</div>
 </div>

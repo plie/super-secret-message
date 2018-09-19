@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resource :user
+
   
 
   get 'messages', to: 'messages#new'

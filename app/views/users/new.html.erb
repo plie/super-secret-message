@@ -3,11 +3,20 @@
     <h1>Super Secret Message</h1>
     
     <p>Sign up</p>
-    
-    <%= form_tag(new_user_path) do %>
-      <%= text_field_tag(:handle, nil, placeholder: "Handle") %>
-      <%= password_field_tag(:password, nil, placeholder: "Password") %>
-      <%= submit_tag "Sign Up" %>
+    <p>Enter your mobile number if you wish to send message links via text.</p>
+
+    <%= form_for @user, url: user_path, html: {method: :put } do |f| %>
+
+    	<%= f.label :handle %>
+    	<%= f.text_field :handle %>
+
+    	<%= f.label :cell %>
+    	<%= f.text_field :cell %>
+
+    	<%= f.label :password %>
+    	<%= f.password_field :password %>
+
+    	<%= f.submit 'Sign Up' %>
     <% end %>
 
     </div>
