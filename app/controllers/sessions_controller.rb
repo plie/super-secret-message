@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 		Rails.logger.info("the user: #{@user.handle}")
 		if @user && @user.password == params[:password]
 			Rails.logger.info("@user.id is #{@user.id}")
-			session[:session_id] = @user.id
+			session[:user_id] = @user.id
 			Rails.logger.info("Inside the session create action: session[:session_id] is #{session[:session_id]}")
 			redirect_to user_path
 		else
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		session[:session_id] = nil
+		session[:user_id] = nil
 		redirect_to new_session_path
 	end
 
