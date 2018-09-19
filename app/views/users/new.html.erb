@@ -2,14 +2,13 @@
   <div class="p-3 mb-2 bg-dark text-white">
     <h1>Super Secret Message</h1>
     
-    <p>Login</p>
-
-    <%= form_tag(session_path) do %>
+    <p>Sign up</p>
+    
+    <%= form_tag(new_user_path) do %>
       <%= text_field_tag(:handle, nil, placeholder: "Handle") %>
       <%= password_field_tag(:password, nil, placeholder: "Password") %>
-      <%= submit_tag "Log in" %>
+      <%= submit_tag "Sign Up" %>
     <% end %>
 
-   
-  </div>
+    </div>
 </div>
