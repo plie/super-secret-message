@@ -5,8 +5,8 @@
     <p>Sign up</p>
     <p>Enter your mobile number if you wish to send message links via text.</p>
 
-    <%= form_for @user, url: user_path, html: {method: :put } do |f| %>
-
+    <%= form_for @user, :url => {:action => "create"} do |f| %>
+    
     	<%= f.label :handle %>
     	<%= f.text_field :handle %>
 

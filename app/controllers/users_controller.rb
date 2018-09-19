@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		@user.password_hash = user_params[:password_hash]
+		
 		if @user.save
 			flash[:success] = "New account created. Welcome!"
 			redirect_to user_path
@@ -46,16 +46,17 @@ class UsersController < ApplicationController
 	private
 
 	def set_and_authenticate_user
-		@current_user = User.find_by(id: session[:user_id])
-		unless @current_user
-			flash[:success] = "Welcome! Please log in."
+		@current_user = User.find_by_id(session[:user_id])
+		if @current_user
+			@user = @current_user
+		else
+			flash[:warning] = "Welcome! Please log in!"
 			redirect_to new_session_path
 		end
-		@user = @current_user
-	end
+  end
 
 	def user_params
-		params.require(:user).permit(:cell, :password_hash, :handle)
+		params.require(:user).permit(:cell, :password, :handle)
 	end
 
 end
