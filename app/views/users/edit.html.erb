@@ -6,11 +6,18 @@
     <p>Edit your account information:</p>
     
     <%= form_for @user do |f| %>
-    	<%= f.text_field :handle, 'Handle' %>
-    	<%= f.text_field :cell, 'Cell' %>
-    	<%= f.password_field :password 'Password' %>
+
+    	<%= f.label :handle %>
+    	<%= f.text_field :handle %>
+
+    	<%= f.label :cell %>
+    	<%= f.text_field :cell %>
+
+    	<%= f.label :password %>
+    	<%= f.password_field :password %>
+
     	<%= f.submit 'Submit' %>
     <% end %>
-    
+
 	</div>
 </div>
