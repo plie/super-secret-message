@@ -15,8 +15,9 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		
 		if @user.save
+			# reset_session
 			flash[:success] = "New account created. Welcome!"
-			redirect_to user_path
+			redirect_to :controller => 'sessions', :action => 'create'
 		else
 			flash[:danger] = "New account not created. Please try again"
 			redirect_to new_user_path
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
 		@current_user = User.find_by_id(session[:user_id])
 
 		Rails.logger.info("session[:user_id] is: #{session[:user_id]}")
-		
+
 		if @current_user
 			@user = @current_user
 		else
