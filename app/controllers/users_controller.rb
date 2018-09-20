@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-	before_action :set_and_authenticate_user, only: [:show, :edit, :update, :destroy]
+	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	layout 'account'
-
-	attr_reader :current_user
 
 	def show
 	end
@@ -15,9 +13,8 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		
 		if @user.save
-			# reset_session
-			flash[:success] = "New account created. Welcome!"
-			redirect_to :controller => 'sessions', :action => 'create'
+			flash[:success] = "New account created. Welcome, #{@user.handle}!"
+			redirect_to user_path
 		else
 			flash[:danger] = "New account not created. Please try again"
 			redirect_to new_user_path
@@ -46,20 +43,8 @@ class UsersController < ApplicationController
 
 	private
 
-	def set_and_authenticate_user
-		Rails.logger.info("session[:session_id] is: #{session[:session_id]}")
-		Rails.logger.info("session[:user_id] is: #{session[:user_id]}")
-
-		@current_user = User.find_by_id(session[:user_id])
-
-		Rails.logger.info("session[:user_id] is: #{session[:user_id]}")
-
-		if @current_user
-			@user = @current_user
-		else
-			flash[:warning] = "Please log in"
-			redirect_to new_session_path
-		end
+	def set_user
+		@user = User.find(session[:user_id])
   end
 
 	def user_params

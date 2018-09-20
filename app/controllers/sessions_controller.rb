@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+	skip_before_action :authenticate
 	layout 'account'
 
 	def new
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session[:user_id] = nil
-		redirect_to new_session_path
+		redirect_to '/'
 	end
 
 	private

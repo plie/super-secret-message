@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  skip_before_action :authenticate
   before_action :get_message, only: [:new, :password]
   
   def new
