@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 
 	def create
 		@user = User.find_by_handle(params[:handle])
-		Rails.logger.info("the user: #{@user.handle}")
 		if @user && @user.password == params[:password]
 			Rails.logger.info("@user.id is #{@user.id}")
 			session[:user_id] = @user.id
