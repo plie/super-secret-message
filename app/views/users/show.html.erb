@@ -1,7 +1,8 @@
 <div class="mt-5 container">
   <div class="p-3 mb-2 bg-dark text-white">
 	<h1>User Dashboard</h1>
-		<p><%= @user.handle %></p>
+		<p>Welcome, <%= @user.handle %></p>
+		<p>Please stay tuned...Soon, we will add the capability of sending message links by text!</p>
 		<p><%= link_to 'Edit Your Account', edit_user_path %></p>
 		<p><%= link_to 'Log Out', session_path, method: 'delete' %></p>
 
