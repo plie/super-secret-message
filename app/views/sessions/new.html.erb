@@ -7,7 +7,7 @@
     <%= form_tag(session_path) do %>
       <%= text_field_tag(:handle, nil, placeholder: "Handle") %>
       <%= password_field_tag(:password, nil, placeholder: "Password") %>
-      <%= submit_tag "Log in" %>
+      <%= submit_tag "Log in", class: "btn btn-primary btn-sm" %>
     <% end %>
 
    

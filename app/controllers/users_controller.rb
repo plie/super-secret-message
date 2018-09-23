@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	skip_before_action :authenticate, only: [:new, :create]
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	layout 'account'
 
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
 		
 		if @user.save
 			flash[:success] = "New account created. Welcome, #{@user.handle}!"
+			session[:user_id] = @user.id
 			redirect_to user_path
 		else
 			flash[:danger] = "New account not created. Please try again"
