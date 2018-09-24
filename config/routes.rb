@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resource :user
-
-  
+  resources :texts
+  resources :replies, only: [:create]
 
   get 'messages', to: 'messages#new'
   post 'messages', to: 'messages#create'
