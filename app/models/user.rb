@@ -2,6 +2,7 @@ require 'bcrypt'
 
 class User < ApplicationRecord
 	include BCrypt
+  has_many :texts, dependant: :destroy
   validates :handle, presence: true
   validates :password, presence: true
   validated :cell, presence: true

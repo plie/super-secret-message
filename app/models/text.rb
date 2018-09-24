@@ -2,6 +2,7 @@ require 'bcrypt'
 
 class Text < ApplicationRecord
 	include Bcrypt
+	belongs_to :user
 	before_create :generate_token
 
 	validates :alias, presence: true, length: { maximum: 20, too_long: "%{count} charaters is the maximum allowed for the alias" }

@@ -6,8 +6,12 @@ class CreateTexts < ActiveRecord::Migration[5.0]
     	t.string :number, null: false
     	t.string :password_hash, null: false
     	t.string :token, unique: true, null: false
+        t.integer :user_id
 
     	t.timestamps
     end
+
+    add_index :texts, :user_id
+    
   end
 end

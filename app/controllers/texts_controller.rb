@@ -2,7 +2,7 @@ require 'twilio-ruby'
 
 class TextsController < ApplicationController
 	skip_before_action :authenticate, only: [:show]
-	before_action :set_user
+	before_action :set_user, except: [:show]
 	layout 'account'
 
 	def index
@@ -10,6 +10,7 @@ class TextsController < ApplicationController
 	end
 
 	def show
+		# render layout: 'application' Will this work? Necessary?
 		@text_temp = Text.find_by_token(params[:token])
     if @text_temp && @text_temp.password == params["text"]["password"]
       Rails.logger.info("Authentication succeeded")
@@ -30,7 +31,7 @@ class TextsController < ApplicationController
 	end
 
 	def create
-		@text = Text.create(user: @user)
+		@text = Text.create(user: @user). # or @text = @user.text.create
     if @text.save
     	flash[:success] = "Message saved and a link was sent to the receiver via text"
     	redirect_to user_path
@@ -40,12 +41,12 @@ class TextsController < ApplicationController
     end
 
 		boot_twilio
-		@text = Text.new
+		# @text = Text.new. this is unncessary, right?
     Rails.logger.info("booting Twilio")
     sms = @client.messages.create(
       from: Rails.application.secrets.twilio_number,
-      to: @user.cell,
-      body: @text.body # this changes to a link with the token to retrieve the message
+      to: @text.number,
+      body: "https://super-secret-message.herokuapp.com/texts/#{@text.token}" # How am I going to do this??
       )
     Rails.logger.info(params[:Body])
     redirect_to user_path
