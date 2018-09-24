@@ -1,0 +1,31 @@
+<div class="mt-5 container">
+  <div class="p-3 mb-2 bg-dark text-white">
+    <h1>Super Secret Message</h1>
+    <h3>Hey, <%= @user.handle %> what's your message?</h3>
+    
+    <%= form_for(@user.text) do |f| %>
+      <div class="form-group">
+        <%= f.label :body, "Message" %>
+        <%= f.text_area :body, class: "form-control", rows: "10", placeholder: "Type your secret message here" %>
+        <small class="form-text text-light">This is a secret messaging service. Your messages are automatically deleted once retrieved.</small>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password, class: "form-control", placeholder: "Enter a password" %>
+        <small class="form-text text-light">Password can't be blank. In order to retrieve this message, you must use a password.</small>
+      </div>
+      <div class="form-group">
+        <%= f.label :number, "Recipient's Cell" %>
+        <%= f.text_field :number, class: "form-control", placeholder: "Type your recipient's cell phone number here" %>
+        <small class="form-text text-light">Your recipient will be texted a link to this app to open their message. Be sure they know the password!</small>
+      </div>
+      <%= f.submit "Create and Send", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
+<div class="mt-5 container">
+  <div class="p-3 mb-2 bg-dark text-white">
+    <h3>Don't want the app to text the recipient? No problem. Log out and create a message as a guest.</h3>
+    <h3><%= link_to 'Log out', sessions_path, method: 'delete' %>
+  </div>
+</div>
